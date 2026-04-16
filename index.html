@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register|Login</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f4f4f4;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkblue;
+        }
+            
+
+    </style>
+</head>
+<body>
+<h2>Register Page</h2>
+<input type="text" id="name" placeholder="name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" type="password" placeholder="Password">
+<button type="submit" onclick="register()">Register</button>
+<a href="login.html">Go to Login</a>
+<script>
+const BASE_URL = "https://notekeeper-iota-brown.vercel.app/auth";
+
+async function register() {
+    try {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        const res = await fetch(`${BASE_URL}/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, password })
+        });
+
+        const data = await res.json();
+
+        console.log("Response:", data);
+
+        if (!res.ok) {
+            alert(data.error || "Registration failed");
+            return;
+        }
+
+        alert("Registered successfully");
+
+        window.location.href = "login.html";
+
+    } catch (err) {
+        console.log("ERROR:", err);
+        alert("Server not reachable or backend error");
+    }
+}
+</script>
+</script>
+
+</body>
+</html>
