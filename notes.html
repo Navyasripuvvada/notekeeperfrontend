@@ -209,7 +209,7 @@ input {
             const title = document.getElementById("title").value;
             const content = document.getElementById("content").value;
 
-            const res = await fetch(`${BASE_URL}/notes`, {
+            const res = await fetch(`${BASE_URL}notes`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -234,7 +234,7 @@ input {
         async function updateNote() {
             const token = getToken();
 
-            await fetch(`${BASE_URL}/notes/${editId}`, {
+            await fetch(`${BASE_URL}notes/${editId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -253,7 +253,7 @@ input {
         async function deleteNote(id) {
             const token = getToken();
 
-            await fetch(`${BASE_URL}/notes/${id}`, {
+            await fetch(`${BASE_URL}notes/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`
