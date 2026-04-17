@@ -155,7 +155,7 @@ input {
     </div>
 
         <script>
-        const BASE_URL = "https://notekeeper-iota-brown.vercel.app";
+        const BASE_URL = "https://notekeeper-navyasripuvvadas-projects.vercel.app/";
         let editId = null;
 
         function getToken() {
@@ -171,7 +171,7 @@ input {
                 return;
             }
 
-            const res = await fetch(`${BASE_URL}/notes`, {
+            const res = await fetch(`${BASE_URL}notes`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${token}`
